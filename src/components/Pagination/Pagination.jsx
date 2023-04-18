@@ -16,7 +16,7 @@ const Pagination = ({ pages, currentPage, onChange }) => {
   }, [pages]);
 
   const handleChangePage = (page) => {
-    onChange(page);
+    page !== currentPage && onChange(page);
   };
 
   const prevButtons = () => {

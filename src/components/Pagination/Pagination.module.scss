@@ -18,9 +18,10 @@
     align-items: center;
     width: 2rem;
     height: 2rem;
-    background-color: rgba($gray, 0.5);
+    background-color: rgba($gray, 0.025);
+    color: $gray;
     border-radius: 50%;
-    border: none;
+    border: 1px solid rgba($primary, 0.1);
     outline: none;
     transition: all 0.3s;
     cursor: pointer;
@@ -47,8 +48,8 @@
     }
 
     &:hover {
-      background-color: $primary;
-      color: $white;
+      background-color: rgba($primary, 0.2);
+      color: $primary;
     }
   }
 }
