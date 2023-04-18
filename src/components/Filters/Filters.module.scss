@@ -1,0 +1,50 @@
+@import '@styles/Variables.module.scss';
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 0.5rem;
+
+    .filter {
+        width: 100%;
+        margin: 0.5rem 0;
+
+        .name {
+            text-align: left;;
+        }
+    }
+
+    .valuesContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        margin: 0.5rem 0;
+        font-size: 0.95rem;
+
+        .value {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            color: rgba($gray, 0.8);
+            cursor: pointer;
+            list-style-type: none;
+            line-height: 1.75rem;
+
+            &:hover {
+                color: $gray;
+            }
+
+            .results {
+                color: rgba($gray, 0.4);
+            }
+        }
+    }
+}
