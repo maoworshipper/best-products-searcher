@@ -1,0 +1,54 @@
+@import '@styles/Variables.module.scss';
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba($gray, 0.2);
+  margin: 0 2rem 1rem;
+  padding: 1rem;
+
+  .page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba($gray, 0.5);
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &.arrows {
+      padding-top: 3px;
+    }
+
+    &.currentPage {
+      background-color: $primary;
+      color: $white;
+      font-weight: 600;
+    }
+
+    &:disabled {
+      background-color: $light-gray;
+      color: rgba($gray, 0.2);
+      cursor: not-allowed;
+
+        &:hover {
+            background-color: $light-gray;
+            color: rgba($gray, 0.2);
+        }
+    }
+
+    &:hover {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}
