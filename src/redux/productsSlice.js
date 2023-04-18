@@ -17,9 +17,12 @@ export const productsSlice = createSlice({
     },
     addSingleItem: (state, action) => {
       state.item = action.payload;
-    }
+    },
+    removeSingleItem: (state) => {
+      state.item = null;
+    },
   },
 });
 
-export const { addResults, addSingleItem } = productsSlice.actions;
+export const { addResults, addSingleItem, removeSingleItem } = productsSlice.actions;
 export default productsSlice.reducer;
