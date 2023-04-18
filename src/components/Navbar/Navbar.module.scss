@@ -14,21 +14,4 @@
     color: $white;
     text-decoration: none;
   }
-  .right {
-    display: flex;
-    align-items: center;
-
-    .navLinks {
-      display: flex;
-      align-items: center;
-      .linkItem {
-        color: $white;
-        text-decoration: none;
-        margin: 0 0.5rem;
-        &:hover {
-          color: $light-gray;
-        }
-      }
-    }
-  }
 }
