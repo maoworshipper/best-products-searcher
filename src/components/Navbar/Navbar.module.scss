@@ -1,0 +1,34 @@
+@import '@styles/Variables.module.scss';
+
+.navbar {
+  background-color: $primary;
+  color: $white;
+  padding: $padding-2x;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  .brand {
+    color: $white;
+    text-decoration: none;
+  }
+  .right {
+    display: flex;
+    align-items: center;
+
+    .navLinks {
+      display: flex;
+      align-items: center;
+      .linkItem {
+        color: $white;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        &:hover {
+          color: $light-gray;
+        }
+      }
+    }
+  }
+}
