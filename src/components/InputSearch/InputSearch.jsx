@@ -14,7 +14,7 @@ const InputSearch = () => {
   const { data, stream, fetchData } = useFetch();
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = async () => {
     search.current.value !== "" && fetchData(`api/search?query=${search.current.value}`, {}, 'search');
   };
 
