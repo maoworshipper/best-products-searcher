@@ -5,10 +5,11 @@ import NavBar from '@components/Navbar/Navbar';
 import CardsGrid from '@components/CardsGrid/CardsGrid';
 import InputSearch from '@components/InputSearch/InputSearch';
 import Modal from '@components/Modal/Modal';
-import { ProductCard } from '@components/Card/ProductCard';
+import { ProductCard } from '@components/Card/index';
 import styles from '@styles/Home.module.scss';
 import Sidebar from '@components/Sidebar/Sidebar';
 import Filters from '@components/Filters/Filters';
+import Footer from '@components/Footer/Footer';
 
 export default function Home() {
   const { item, available_filters } = useSelector((state) => state.products);
@@ -34,19 +35,14 @@ export default function Home() {
             <CardsGrid />
           </div>
         </div>
+        <Footer />
       </Layout>
       <Modal
         isOpen={item ? true : false}
         onClose={() => dispatch(removeSingleItem())}
       >
-        {item ? <ProductCard {...item} /> : null}
+        <ProductCard {...item} />
       </Modal>
     </>
   );
-}
-
-export async function getServerSideProps(req) {
-  return {
-    props: {},
-  };
 }
