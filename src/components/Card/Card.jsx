@@ -1,6 +1,11 @@
 import Image from 'next/image';
 import styles from './Card.module.scss';
 
+const conditions = {
+  new: 'Nuevo',
+  used: 'Usado',
+};
+
 export const Card = ({ id, title, condition, price, thumbnail, handleClick }) => {
   return (
     <div className={styles.card}>
@@ -9,7 +14,7 @@ export const Card = ({ id, title, condition, price, thumbnail, handleClick }) =>
       </div>
       <div className={styles.cardContent}>
         <h3 className={styles.title} onClick={() => handleClick(id)}>{title?.length > 80 ? `${title?.substring(0, 80)}...` : title}</h3>
-        <p className={styles.condition}>{condition}</p>
+        <p className={styles.condition}>{conditions[condition]}</p>
         <p className={styles.price}>$ {price}</p>
       </div>
     </div>

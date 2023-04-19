@@ -12,13 +12,39 @@
     padding: 1rem;
     min-height: 170px;
 
+    &:hover {
+        box-shadow: 0 2px 4px 0 rgba($primary, 0.2);
+    }
+
     .cardContent {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4px;
         text-align: left;
 
         .title {
             font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+
+        .condition {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba($gray, 0.5);
+            border-radius: 2px;
+          }
+
+        .price {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: $primary;
         }
     }
 }
