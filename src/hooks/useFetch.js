@@ -9,7 +9,7 @@ export const useFetch = () => {
   const fetchData = async (
     url,
     options = {},
-    actualStream = ""
+    actualStream = "search"
   ) => {
     setData(null);
     setError(null);
