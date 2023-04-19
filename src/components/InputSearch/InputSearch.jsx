@@ -15,18 +15,16 @@ const InputSearch = () => {
   const dispatch = useDispatch();
 
   const handleClick = async () => {
-    search.current.value !== "" && fetchData(`api/search?query=${search.current.value}`, {}, 'search');
+    search.current.value !== '' &&
+      fetchData(`api/search?q=${search.current.value}`);
   };
 
   const handleInput = (e) => {
-    search.current.value !== "" && e.keyCode === 13 && handleClick();
+    search.current.value !== '' && e.keyCode === 13 && handleClick();
   };
 
   useEffect(() => {
-    if (data && stream === 'search') {
-      console.log(data);
-      dispatch(addResults(data));
-    }
+    data && stream === 'search' && dispatch(addResults(data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, stream]);
 
