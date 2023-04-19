@@ -18,10 +18,27 @@
 
   .close {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 4px;
+    right: 4px;
     padding: 1rem;
     cursor: pointer;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-color: $white;
+    background-image: url('/images/close.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: all 0.3s;
+
+    &:hover {
+      background-image: url('/images/close-hover.svg');
+      cursor: pointer;
+      opacity: 1;
+    }
   }
 
   .content {
@@ -30,53 +47,17 @@
     color: $gray;
     border-radius: 8px;
     box-shadow: 0 1px 2px 0 rgba($gray, 0.2);
-    padding: 2rem;
+    padding: 1.25rem;
     width: 100%;
     max-width: 500px;
+    height: 100%;
+    max-height: 90vh;
+    overflow-y: scroll;
 
     .title {
       font-size: 1.5rem;
       font-weight: 600;
       margin-bottom: 1rem;
-    }
-
-    .description {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: flex-end;
-      column-gap: 1rem;
-
-      .button {
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        transition: all 0.3s;
-
-        &.cancel {
-          background-color: $light-gray;
-          color: $gray;
-
-          &:hover {
-            background-color: $gray;
-            color: $white;
-          }
-        }
-
-        &.confirm {
-          background-color: $primary;
-          color: $white;
-
-          &:hover {
-            background-color: $secondary;
-          }
-        }
-      }
     }
   }
 }
