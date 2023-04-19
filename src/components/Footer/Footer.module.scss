@@ -1,6 +1,9 @@
 @import '@styles/Variables.module.scss';
 
 .footer {
+    position:absolute;
+    bottom: 0;
+    width: 100%;
     background-color: $primary;
     color: $white;
     padding: $padding-2x;

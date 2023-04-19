@@ -1,13 +1,12 @@
 @import '@styles/Variables.module.scss';
 
 .sidebar {
-    width: 25%;
+    width: 20%;
     height: -webkit-fill-available;
-    background-color: #fff;
     z-index: 100;
     margin: 0 1rem;
     padding: 1rem;
-    background-color: $white;
+    background-color: rgba($light-gray, 0.1);
     border-radius: 8px;
     box-shadow: 0 1px 2px 0 rgba($gray, 0.2);
     transition: transform 0.3s ease-out;
