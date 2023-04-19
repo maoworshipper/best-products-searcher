@@ -1,0 +1,14 @@
+@import '@styles/Variables.module.scss';
+
+.footer {
+    background-color: $primary;
+    color: $white;
+    padding: $padding-2x;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+
+    a:hover {
+        color: rgba($white, 0.8);
+    }
+}
