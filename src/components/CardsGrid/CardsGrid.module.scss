@@ -1,14 +1,39 @@
 @import '@styles/Variables.module.scss';
 
 .container {
-    background-color: rgba($light-gray, 0.2);
-    padding: 2rem 1rem;
-    text-align: center;
+  background-color: rgba($light-gray, 0.2);
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  width: 55%;
 
-    .cardsGrid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        grid-gap: 1rem;
-        padding: 2rem;
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 2rem;
+
+    p {
+      display: block;
+      font-size: 1rem;
+      color: $gray;
+
+      &.search {
+        font-weight: 600;
+      }
+
+      &.results {
+        font-weight: 300;
+      }
     }
+  }
+
+  .cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: 1rem;
+    padding: 2rem;
+  }
 }

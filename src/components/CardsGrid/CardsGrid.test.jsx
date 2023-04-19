@@ -1,8 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { renderWithProviders } from '@utils/utils-for-test';
 import CardsGrid from './CardsGrid';
 import { productsMock } from './mockTest/products.mock';
-import { addResults } from '@redux/productsSlice';
 
 describe('CardsGrid', () => {
   test('renders CardsGrid component', () => {
@@ -11,7 +10,7 @@ describe('CardsGrid', () => {
             products: productsMock,
         },
     });
-    expect(screen.getByText(/Resultados de la búsqueda:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Búsqueda:/i)).toBeInTheDocument();
   });
 
     test('renders CardsGrid component with empty results', () => {
@@ -26,6 +25,6 @@ describe('CardsGrid', () => {
                 },
             },
         });
-        expect(screen.getByText(/Resultados de la búsqueda:/i)).toBeInTheDocument();
+        expect(screen.getByText(/Búsqueda:/i)).toBeInTheDocument();
     });
 });

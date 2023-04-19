@@ -21,8 +21,23 @@ export const productsSlice = createSlice({
     removeSingleItem: (state) => {
       state.item = null;
     },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+    addToCart: (state, action) => {
+      state.cart =
+        state?.cart?.length > 0
+          ? [...state.cart, action.payload]
+          : [action.payload];
+    },
   },
 });
 
-export const { addResults, addSingleItem, removeSingleItem } = productsSlice.actions;
+export const {
+  addResults,
+  addSingleItem,
+  removeSingleItem,
+  setCurrentPage,
+  addToCart,
+} = productsSlice.actions;
 export default productsSlice.reducer;
