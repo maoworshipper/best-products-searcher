@@ -1,76 +1,112 @@
 import { useState, useEffect } from 'react';
 import styles from './Pagination.module.scss';
 
+const maxItems = 1000;
 const defaultOffset = 50;
+const maxTotalPages = 20;
+const maxPagesToShow = 5;
 
-const Pagination = ({ pages, currentPage, onChange }) => {
+const calculatePagesToShow = (
+  currentPage,
+  pagesArray,
+  allPages,
+  maxTotalPages,
+  maxPagesToShow,
+) => {
+  const pagesToShow = [];
+  /* If the current page is greater than the max total pages, then the initial page will be the max total pages */
+  let initialPage = currentPage > maxTotalPages ? maxTotalPages : currentPage;
+  /* if initial page is less than the max pages to show, then the initial page will be 1 */
+  initialPage =
+    initialPage < maxPagesToShow ? 1 : initialPage - maxPagesToShow + 1;
+  /* if the current page is the last page in the page array state, then the initial page will be the current page + 1 */
+  initialPage =
+    currentPage === pagesArray[pagesArray.length - 1]
+      ? initialPage + 1
+      : initialPage;
+  /* if the total pages is less than the max pages to show, then the initial page will be 1 */
+  initialPage = allPages <= maxPagesToShow ? 1 : initialPage;
+
+  const lastItem =
+    allPages <= maxPagesToShow ? allPages : initialPage + maxPagesToShow - 1;
+  const maxPages = lastItem > maxTotalPages ? maxTotalPages : lastItem;
+
+  for (let i = initialPage; i <= maxPages; i++) {
+    pagesToShow.push(i);
+  }
+  return pagesToShow;
+};
+
+const Pagination = ({ pages, currentPage, offset, onChange }) => {
   const [pagesArray, setPagesArray] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    const pagesArray = [];
-    const totalPages = Math.ceil(pages / defaultOffset);
-    for (let i = 1; i <= totalPages; i++) {
-      pagesArray.push(i);
-    }
-    setPagesArray(pagesArray);
-  }, [pages]);
+    const realItems = pages > maxItems ? maxItems : pages;
+    const allPages = Math.ceil(realItems / defaultOffset);
+    const pagesToShow = calculatePagesToShow(
+      currentPage,
+      pagesArray,
+      allPages,
+      maxTotalPages,
+      maxPagesToShow,
+    );
+    setPagesArray(pagesToShow);
+    setTotalPages(allPages);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pages, offset]);
 
   const handleChangePage = (page) => {
     page !== currentPage && onChange(page);
   };
 
-  const prevButtons = () => {
-    if (currentPage === 1) return null;
-    if (currentPage > 1) {
-      return (
-        <>
-          <button
-            className={`${styles.page} ${styles.arrows}`}
-            onClick={() => handleChangePage(1)}
-            title="Primera página"
-            role="button"
-          >
-            {'<<'}
-          </button>
-          <button
-            className={`${styles.page} ${styles.arrows}`}
-            onClick={() => handleChangePage(currentPage - 1)}
-            title="Anterior"
-          >
-            {'<'}
-          </button>
-        </>
-      );
-    }
+  const arrows = {
+    first: {
+      title: 'Primera página',
+      arrow: '<<',
+      payload: 1,
+    },
+    prev: {
+      title: 'Anterior',
+      arrow: '<',
+      payload: currentPage - 1,
+    },
+    next: {
+      title: 'Siguiente',
+      arrow: '>',
+      payload: currentPage + 1,
+    },
+    last: {
+      title: 'Última página',
+      arrow: '>>',
+      payload: totalPages,
+    },
   };
 
-  const nextButtons = () => {
-    if (currentPage === pagesArray.length) return null;
-    if (currentPage < pagesArray.length) {
-      return (
-        <>
-          <button
-            className={`${styles.page} ${styles.arrows}`}
-            onClick={() => handleChangePage(currentPage + 1)}
-            title="Siguiente"
-          >
-            {'>'}
-          </button>
-          <button
-            className={`${styles.page} ${styles.arrows}`}
-            onClick={() => handleChangePage(pagesArray.length)}
-            title="Última página"
-          >
-            {'>>'}
-          </button>
-        </>
-      );
-    }
+  const validations = {
+    first: currentPage !== 1 && currentPage > 1,
+    prev: currentPage !== 1 && currentPage > 1,
+    next: currentPage !== totalPages && currentPage < totalPages,
+    last: currentPage !== totalPages && currentPage < totalPages,
+  };
+
+  const renderArrows = (type) => {
+    const arrow = arrows[type];
+    return validations[type] ? (
+      <button
+        className={`${styles.page} ${styles.arrows}`}
+        onClick={() => handleChangePage(arrow.payload)}
+        title={arrow.title}
+      >
+        {arrow.arrow}
+      </button>
+    ) : null;
   };
 
   return (
     <div className={styles.pagination} role="navigation">
-      {prevButtons()}
+      {renderArrows('first')}
+      {renderArrows('prev')}
       {pagesArray.map((page) => {
         return (
           <button
@@ -84,7 +120,8 @@ const Pagination = ({ pages, currentPage, onChange }) => {
           </button>
         );
       })}
-      {nextButtons()}
+      {renderArrows('next')}
+      {renderArrows('last')}
     </div>
   );
 };
