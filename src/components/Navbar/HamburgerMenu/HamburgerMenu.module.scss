@@ -1,0 +1,68 @@
+@import '@styles/Variables.module.scss';
+@import '@styles/Breakpoints.module.scss';
+
+.hamburgerMenu {
+  display: none;
+}
+
+@include media('mobile') {
+  .hamburgerMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .hamburgerMenuButton {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 2;
+
+      .hamburgerMenuIcon {
+        width: 30px;
+        height: 2px;
+        background-color: $white;
+        margin: 3px 0;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &.isActive {
+        .hamburgerMenuIcon:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+          background-color: $gray;
+        }
+
+        .hamburgerMenuIcon:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburgerMenuIcon:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+          background-color: $gray;
+        }
+      }
+    }
+
+    .hamburgerMenuNav {
+      display: block;
+      position: absolute;
+      top: 0;
+      background-color: $white;
+      color: $black;
+      width: 100%;
+      transition: all 1s ease-in-out;
+      transform: translateX(65%);
+      z-index: 1;
+
+      &.isActive {
+        transform: translateX(16px);
+      }
+    }
+  }
+}
