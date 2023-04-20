@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['api.mercadolibre.com', 'http2.mlstatic.com'],
+    domains: [process.env.NEXT_PUBLIC_IMAGES_URL],
     deviceSizes: [768, 992, 1200],
   },
 };

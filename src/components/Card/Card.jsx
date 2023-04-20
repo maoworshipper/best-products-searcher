@@ -11,10 +11,17 @@ export const Card = ({ id, title, condition, price, thumbnail, handleClick }) =>
   return (
     <div className={styles.card}>
       <div className={styles.cardImage}>
-        <Image src={thumbnail} alt={title} width={100} height={100}  />
+        {thumbnail ? (
+          <Image src={thumbnail} alt={title} width={100} height={100} />
+        ) : (
+          <span className={styles.noImage}>Sin imagen</span>
+        )}
       </div>
+
       <div className={styles.cardContent}>
-        <h3 className={styles.title} onClick={() => handleClick(id)}>{title?.length > 80 ? `${title?.substring(0, 80)}...` : title}</h3>
+        <h3 className={styles.title} onClick={() => handleClick(id)}>
+          {title?.length > 80 ? `${title?.substring(0, 80)}...` : title}
+        </h3>
         <p className={styles.condition}>{conditions[condition]}</p>
         <p className={styles.price}>$ {formatNumber(price)}</p>
       </div>
