@@ -4,7 +4,7 @@ import styles from './Pagination.module.scss';
 
 const Pagination = ({ onChange }) => {
   const { currentPage } = useSelector((state) => state.products) || {};
-  const { pagesArray, totalPages } = usePagination();
+  const { pagesArray, totalPages } = usePagination() || {};
 
   const handleChangePage = (page) => {
     page !== currentPage && onChange(page);
@@ -54,7 +54,7 @@ const Pagination = ({ onChange }) => {
     <div className={styles.pagination} role="navigation">
       {renderArrows('first')}
       {renderArrows('prev')}
-      {pagesArray.map((page) => {
+      {pagesArray?.map((page) => {
         return (
           <button
             key={`pagination-${page}`}
