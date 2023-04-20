@@ -16,10 +16,3 @@ $gray: #31393c;
 $light-gray: #ccc;
 $text-color: #000;
 $background-color: #fff;
-
-@media (prefers-color-scheme: dark) {
-  $text-color: #fff;
-  $background-color: #31393c;
-}
-
-

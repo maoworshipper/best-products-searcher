@@ -1,4 +1,5 @@
 @import '@styles/Variables.module.scss';
+@import '@styles/Breakpoints.module.scss';
 
 .container {
   background-color: rgba($light-gray, 0.2);
@@ -35,5 +36,23 @@
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     grid-gap: 1rem;
     padding: 2rem;
+  }
+
+  @include media('laptop') {
+    width: 74%;
+    margin-bottom: 4rem;
+
+    .cardsGrid {
+      padding: 2rem 1rem;
+    }
+  }
+
+  @include media('mobile') {
+    width: 92%;
+    margin-bottom: 4rem;
+
+    .cardsGrid {
+      padding: 2rem 0rem;
+    }
   }
 }

@@ -1,0 +1,14 @@
+$breakpoints: (
+  'desktop': (min-width: 1200px),
+  'laptop' : (min-width: 992px) and (max-width: 1199px),
+  'tablet': (min-width: 768px) and (max-width: 991px),
+  'mobile': (min-width: 360px) and (max-width: 767px),
+) !default;
+
+@mixin media($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and #{ inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+}
