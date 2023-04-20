@@ -1,11 +1,11 @@
 import { screen, fireEvent } from '@testing-library/react';
 import InputSearch from './InputSearch';
-import { renderWithProviders } from '@utils/utils-for-test';
+import { renderWithProviders } from '@utils/renderWithProviders';
 
 describe('InputSearch', () => {
   test('renders InputSearch component', () => {
     renderWithProviders(<InputSearch />);
-    const inputSearch = screen.getByPlaceholderText('Ejemplo: Power query');
+    const inputSearch = screen.getByPlaceholderText('Sillas, libros, etc.');
     expect(inputSearch).toBeInTheDocument();
     const buttonSearch = screen.getByTitle('Buscar');
     expect(buttonSearch).toBeInTheDocument();

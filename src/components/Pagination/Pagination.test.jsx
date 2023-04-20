@@ -1,5 +1,5 @@
 import { screen, fireEvent } from '@testing-library/react';
-import { renderWithProviders } from '@utils/utils-for-test';
+import { renderWithProviders } from '@utils/renderWithProviders';
 import Pagination from './Pagination';
 
 describe('Pagination', () => {

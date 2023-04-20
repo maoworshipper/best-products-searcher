@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from '@utils/utils-for-test';
+import { renderWithProviders } from '@utils/renderWithProviders';
 import Modal from './Modal';
 
 describe('Modal', () => {

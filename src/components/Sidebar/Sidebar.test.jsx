@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { renderWithProviders } from '@utils/utils-for-test';
+import { renderWithProviders } from '@utils/renderWithProviders';
 import Sidebar from './Sidebar';
 
 describe('Sidebar', () => {
