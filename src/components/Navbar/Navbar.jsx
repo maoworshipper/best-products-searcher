@@ -5,7 +5,7 @@ const NavBar = () => {
   return (
     <nav className={styles.navbar}>
       <Link className={styles.brand} href="/">
-        Los Mejores Productos
+        <h1>Los Mejores Productos</h1>
       </Link>
     </nav>
   );

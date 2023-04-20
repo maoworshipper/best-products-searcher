@@ -5,22 +5,22 @@ import { addResults } from '@redux/productsSlice';
 import styles from './InputSearch.module.scss';
 
 const texts = {
-  placeholder: 'Ejemplo: Power query',
+  placeholder: 'Sillas, libros, etc.',
   title: 'Buscar',
 };
 
 const InputSearch = () => {
   const search = useRef(null);
-  const { data, stream, fetchData } = useFetch();
+  const { data, stream, error, fetchData } = useFetch();
   const dispatch = useDispatch();
 
-  const handleClick = async () => {
+  const submitSearch = async () => {
     search.current.value !== '' &&
       fetchData(`api/search?q=${search.current.value}`);
   };
 
   const handleInput = (e) => {
-    search.current.value !== '' && e.keyCode === 13 && handleClick();
+    search.current.value !== '' && e.keyCode === 13 && submitSearch();
   };
 
   useEffect(() => {
@@ -43,12 +43,13 @@ const InputSearch = () => {
         <button
           type="submit"
           className={styles.button}
-          onClick={handleClick}
+          onClick={submitSearch}
           title={texts.title}
         >
           <span className={styles.icon} />
         </button>
       </div>
+      {error && <p className={styles.error}>No es posible realizar la búsqueda. Por favor intente más tarde.</p>}
     </>
   );
 };

@@ -21,8 +21,10 @@ export default function Home() {
         <NavBar />
         <div className={styles.container}>
           <div className={styles.searchContainer}>
-            <h1 className={styles.title}>Busca tu producto favorito</h1>
-            <InputSearch />
+            <h2 className={styles.title}>Encuentra <span>tu producto favorito</span></h2>
+            <div className={styles.search}>
+              <InputSearch />
+              </div>
           </div>
 
           <div className={styles.mainContainer}>

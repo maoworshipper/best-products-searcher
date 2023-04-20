@@ -1,16 +1,44 @@
+@import '@styles/Variables.module.scss';
+
 .container {
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 
   .searchContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50%;
-    margin: 3rem auto 4rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4rem 5rem 5rem;
+    background: $white;
+    background: linear-gradient(
+      180deg,
+      rgba($white, 1) 0%,
+      rgba($tertiary, 1) 70%,
+      rgba($secondary, 1) 96%
+    );
+
+    .title {
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: 2.4rem;
+      margin-bottom: 1.25rem;
+      text-align: center;
+
+      span {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 300;
+      }
+    }
+
+    .search {
+      width: 50%;
+    }
   }
 
   .mainContainer {
@@ -19,8 +47,6 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    margin: 0 auto;
+    margin: 2rem auto;
   }
-  
-
 }
