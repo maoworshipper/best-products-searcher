@@ -1,0 +1,58 @@
+@import '@styles/Variables.module.scss';
+@import '@styles/Breakpoints.module.scss';
+
+.container {
+  background-color: rgba($light-gray, 0.2);
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  width: 55%;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 2rem;
+
+    p {
+      display: block;
+      font-size: 1rem;
+      color: $gray;
+
+      &.search {
+        font-weight: 600;
+      }
+
+      &.results {
+        font-weight: 300;
+      }
+    }
+  }
+
+  .cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: 1rem;
+    padding: 2rem;
+  }
+
+  @include media('laptop') {
+    width: 74%;
+    margin-bottom: 4rem;
+
+    .cardsGrid {
+      padding: 2rem 1rem;
+    }
+  }
+
+  @include media('mobile') {
+    width: 92%;
+    margin-bottom: 4rem;
+
+    .cardsGrid {
+      padding: 2rem 0rem;
+    }
+  }
+}
