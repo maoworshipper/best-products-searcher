@@ -11,8 +11,8 @@ import { buildFiltersUrl, scrollToTop } from '@utils/index';
 
 export const useCardsGrid = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products) || {};
-  const { filters, results, query, paging, currentPage } = products || {};
+  const { filters, results, query } =
+    useSelector((state) => state.products) || {};
   const { data, stream, fetchData } = useFetch();
 
   const defaultOffset = 50;
@@ -23,10 +23,11 @@ export const useCardsGrid = () => {
   };
 
   const handleChangePagination = async (page) => {
-    const offset = (page - 1) * defaultOffset;
+    const offset = page > 20 ? 1000 : (page - 1) * defaultOffset;
+    const realPage = page > 20 ? 20 : page;
     const filtersUrl = buildFiltersUrl(filters);
     fetchData(`api/search?q=${query}&offset=${offset}${filtersUrl}`);
-    dispatch(setCurrentPage(page));
+    dispatch(setCurrentPage(realPage));
   };
 
   useEffect(() => {

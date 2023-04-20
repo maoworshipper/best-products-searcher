@@ -22,8 +22,6 @@ const CardsGrid = () => {
     return results?.length > 0 ? (
       <div className={styles.pagination}>
         <Pagination
-          pages={paging?.total}
-          currentPage={currentPage}
           onChange={handleChangePagination}
         />
       </div>
