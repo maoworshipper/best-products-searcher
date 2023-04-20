@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '@redux/productsSlice';
+import { formatNumber } from '@utils/formatNumber';
 import styles from './ProductCard.module.scss';
 
 const conditions = {
@@ -76,7 +77,7 @@ export const ProductCard = () => {
           <p className={styles.price}>
             <span className={styles.label}>Precio</span>
             <span className={styles.priceValue}>
-              {`${item?.currency_id} $ ${item?.price}`}
+              {`${item?.currency_id} $ ${formatNumber(item?.price)}`}
             </span>
           </p>
         </div>

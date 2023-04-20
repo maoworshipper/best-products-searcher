@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useCardsGrid } from './hooks/useCardsGrid';
+import { formatNumber } from '@utils/formatNumber';
 import { Card } from '@components/Card/Card';
 import Pagination from '@components/Pagination/Pagination';
 import styles from './CardsGrid.module.scss';
@@ -34,8 +35,10 @@ const CardsGrid = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <p className={styles.search}>Búsqueda: {query}</p>
-        <p className={styles.results}>{paging?.total} resultados</p>
+        <p className={styles.search}>
+          {formatNumber(paging?.total)} resultados
+        </p>
+        <p className={styles.results}>Búsqueda: {query}</p>
       </div>
       <div className={styles.cardsGrid}>{renderCards()}</div>
       {renderPagination()}

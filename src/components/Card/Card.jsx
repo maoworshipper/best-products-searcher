@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { formatNumber } from '@utils/formatNumber';
 import styles from './Card.module.scss';
 
 const conditions = {
@@ -15,7 +16,7 @@ export const Card = ({ id, title, condition, price, thumbnail, handleClick }) =>
       <div className={styles.cardContent}>
         <h3 className={styles.title} onClick={() => handleClick(id)}>{title?.length > 80 ? `${title?.substring(0, 80)}...` : title}</h3>
         <p className={styles.condition}>{conditions[condition]}</p>
-        <p className={styles.price}>$ {price}</p>
+        <p className={styles.price}>$ {formatNumber(price)}</p>
       </div>
     </div>
   );
