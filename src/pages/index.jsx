@@ -12,7 +12,9 @@ import Filters from '@components/Filters/Filters';
 import Footer from '@components/Footer/Footer';
 
 export default function Home() {
-  const { item, available_filters } = useSelector((state) => state.products);
+  const { item, available_filters, filters } = useSelector(
+    (state) => state.products,
+  );
   const dispatch = useDispatch();
 
   return (
@@ -21,14 +23,17 @@ export default function Home() {
         <NavBar />
         <div className={styles.container}>
           <div className={styles.searchContainer}>
-            <h2 className={styles.title}>Encuentra <span>tu producto favorito</span></h2>
+            <h2 className={styles.title}>
+              Encuentra <span>tu producto favorito</span>
+            </h2>
             <div className={styles.search}>
               <InputSearch />
-              </div>
+            </div>
           </div>
 
           <div className={styles.mainContainer}>
-            {available_filters && available_filters.length > 0 && (
+            {((available_filters && available_filters.length > 0) ||
+              filters?.length > 0) && (
               <Sidebar title="Filtros">
                 <Filters />
               </Sidebar>
