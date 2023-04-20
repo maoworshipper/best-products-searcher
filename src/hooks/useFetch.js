@@ -18,7 +18,7 @@ export const useFetch = () => {
     try {
       const response = await fetch(url, options);
       const dataResponse = await response.json();
-      if (dataResponse.statusCode === 500) {
+      if (response.status === 500) {
         setStream(actualStream);
         setError(dataResponse);
       } else {
