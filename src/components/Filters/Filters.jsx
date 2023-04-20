@@ -1,5 +1,6 @@
 import { useFilters } from './hooks/useFilters';
 import { ActiveFilters } from './ActiveFilters';
+import { formatNumber } from '@utils/formatNumber';
 import styles from './Filters.module.scss';
 
 const Filters = () => {
@@ -11,10 +12,11 @@ const Filters = () => {
         className={styles.value}
         key={value.id}
         onClick={() => handleFilter(filter.id, value.id)}
+        role="button"
       >
         <li className={styles.nameValue}>
           {value.name}
-          <span className={styles.results}>{` (${value.results})`}</span>
+          <span className={styles.results}>{` (${formatNumber(value.results)})`}</span>
         </li>
       </ul>
     ));

@@ -24,7 +24,7 @@ export const useFilters = () => {
 
   /* Remove product filter from filters options */
   useEffect(() => {
-    const newFilters = available_filters.filter((filter) => {
+    const newFilters = available_filters?.filter((filter) => {
       return filter.id !== 'product';
     });
     setFiltersOptions(newFilters);
